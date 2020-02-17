@@ -92,17 +92,18 @@ module.exports = function() {
     canvas.height = ch / ratio;
     
     var context = canvas.getContext("2d");
+    
     var gradient = context.createLinearGradient(0, 0, 170, 0);
-    gradient.addColorStop("0", "magenta");
-    gradient.addColorStop("0.5" ,"blue");
-    gradient.addColorStop("1.0", "purple");
+    gradient.addColorStop("0", "#FF00FF");
+    gradient.addColorStop("0.25", "#E800E7");
+    gradient.addColorStop("0.35", "#CC00CC");
+    gradient.addColorStop("0.4", "#B000AF");
+    gradient.addColorStop(".8", "#8B008B");
+    
 
     
     //context.fillStyle = context.strokeStyle = "blue";
-    //context.lineWidth = 10;
-    //context.strokeStyle = gradient;
     context.fillStyle = gradient;
-    
     context.textAlign = "center";
 
     return {context: context, ratio: ratio};
