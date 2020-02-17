@@ -90,9 +90,19 @@ module.exports = function() {
     var ratio = Math.sqrt(canvas.getContext("2d").getImageData(0, 0, 1, 1).data.length >> 2);
     canvas.width = (cw << 5) / ratio;
     canvas.height = ch / ratio;
-
+    
     var context = canvas.getContext("2d");
-    context.fillStyle = context.strokeStyle = "red";
+    var gradient = context.createLinearGradient(0, 0, 170, 0);
+    gradient.addColorStop("0", "magenta");
+    gradient.addColorStop("0.5" ,"blue");
+    gradient.addColorStop("1.0", "purple");
+
+    
+    //context.fillStyle = context.strokeStyle = "blue";
+    //context.lineWidth = 10;
+    //context.strokeStyle = gradient;
+    context.fillStyle = gradient;
+    
     context.textAlign = "center";
 
     return {context: context, ratio: ratio};
@@ -209,15 +219,15 @@ function cloudText(d) {
 }
 
 function cloudFont() {
-  return "serif";
+  return "serif"; //"serif"
 }
 
 function cloudFontNormal() {
-  return "normal";
+  return "normal"; //"normal"
 }
 
 function cloudFontSize(d) {
-  return Math.sqrt(d.value);
+  return Math.sqrt(d.value); //d.value
 }
 
 function cloudRotate() {

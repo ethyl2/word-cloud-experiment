@@ -7,11 +7,19 @@ function App() {
   const canvas = useRef();
   const img = useRef();
 
-  const words = ["Hello", "world", "normally", "you", "want", "more", "words", "than", "this"]
+  const testString = "Thinking Out Loud Marry You All of Me Uptown Funk I Wanna Dance with Somebody Don't Stop Believin' Crazy in Love A Thousand Years I'm Yours Hey Ya";
+  const testArray = testString.split(' ');
+  const words = testArray.map(d => {
+    return {text: d, size: 10 + Math.random() * 90}
+  })
+  /*
+  const words = ["Hello", "Hello", "Hello", "Hello", "Hello", "world", "normally", "you", "want", "more", "words", "than", "this"]
     .map(function(d) {
       console.log(d);
       return {text: d, size: 10 + Math.random() * 90};
     });
+  */
+  console.log(words);
 
   const handleLoad = () => {
     const ctx = canvas.current.getContext("2d");
@@ -22,15 +30,21 @@ function App() {
     cloud().size([640, 425])
     .canvas(canvas.current)
     .words(words)
-    .padding(5)
-    .rotate(function() { return ~~(Math.random() * 2) * 90; })
-    .font("Impact")
-    .fontSize(function(d) { return d.size; })
+    .padding(0.01) //5
+    //.rotate(function() { return ~~(Math.random() * 2) * 90; })
+    .font("sans-serif") //.font("sans") //"Impact"
+    .fontSize(function(d) { 
+      console.log(d.size);
+      return d.size; 
+    }) 
+    
     .on("end", end)
     .start();
 
-    function end(words) { console.log(JSON.stringify(words)); } 
+    function end(words) { 
+      console.log('end');
   }
+}
 
   return (
     <div className="App">
@@ -39,7 +53,7 @@ function App() {
       </header>
 
       <div>
-        <canvas ref={canvas} width={640} height={425} />
+        <canvas ref={canvas} width={640} height={425}/>
         <img onLoad={handleLoad} ref={img} src={cheese} style={{display: 'none'}} alt='cheese'/>
       </div>
 
