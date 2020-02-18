@@ -1,3 +1,10 @@
+This project utilizes the word cloud layout found at https://github.com/jasondavies/d3-cloud.
+I modified it to use with React.
+
+----------------------
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
